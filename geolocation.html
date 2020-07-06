@@ -13,14 +13,18 @@
     </body>
 </html>
 <script>
-    navigator.geolocation.getCurrentPosition((position)=>{
-        let type=""
-        type="latitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-        type="longitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-        type="altitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-        type="accuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-        type="altitudeAccuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-        type="heading";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-        type="speed";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-    })
+    let loop = ()=>{
+        navigator.geolocation.getCurrentPosition((position)=>{
+            let type=""
+            type="latitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="longitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="altitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="accuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="altitudeAccuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="heading";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="speed";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+        })
+        requestAnimationFrame(loop);
+    }
+    loop()
 </script>
