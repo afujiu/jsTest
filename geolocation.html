@@ -15,12 +15,12 @@
 <script>
     navigator.geolocation.getCurrentPosition((position)=>{
         let type=""
-        type="latitude";document.querySelector(`#${latitude}`).innerHTML=position.coords[type]
-        type="longitude";document.querySelector(`#${latitude}`).innerHTML=position.coords[type]
-        type="altitude";document.querySelector(`#${latitude}`).innerHTML=position.coords[type]
-        type="accuracy";document.querySelector(`#${latitude}`).innerHTML=position.coords[type]
-        type="altitudeAccuracy";document.querySelector(`#${latitude}`).innerHTML=position.coords[type]
-        type="heading";document.querySelector(`#${latitude}`).innerHTML=position.coords[type]
-        type="speed";document.querySelector(`#${latitude}`).innerHTML=position.coords[type]
+        type="latitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+        type="longitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+        type="altitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+        type="accuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+        type="altitudeAccuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+        type="heading";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+        type="speed";document.querySelector(`#${type}`).innerHTML=position.coords[type]
     })
 </script>
