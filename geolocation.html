@@ -6,16 +6,14 @@
         <div><span>緯度</span><span id="latitude"></span></div>
         <div><span>経度</span><span id="longitude"></span></div>
         <div><span>高度</span><span id="altitude"></span></div>
-        <div><span>位置精度</span><span id="accuracy"></span></div>
+        <div><span>位置精度</span><span id="accuracy"></span>m</div>
         <div><span>高度精度</span><span id="altitudeAccuracy"></span></div>
         <div><span>移動方向</span><span id="heading"></span></div>
         <div><span>速度</span><span id="speed"></span></div>
     </body>
 </html>
 <script>
-      let loop=()=>{
-        setTimeout(loop,500);
-        navigator.geolocation.getCurrentPosition((position)=>{
+        navigator.geolocation.watchPosition((position)=>{
             let type=""
             type="latitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
             type="longitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
@@ -24,8 +22,6 @@
             type="altitudeAccuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
             type="heading";document.querySelector(`#${type}`).innerHTML=position.coords[type]
             type="speed";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            console.log('test')
         })
-        console.log('test')
-    }
-    loop()
 </script>
