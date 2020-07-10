@@ -23,5 +23,26 @@
             type="heading";document.querySelector(`#${type}`).innerHTML=position.coords[type]
             type="speed";document.querySelector(`#${type}`).innerHTML=position.coords[type]
             console.log('test')
-        })
+        }
+        ,error=>{
+            // 位置情報の取得に失敗した場合
+            switch(error.code) {
+                case 1:
+                    alert("位置情報が許可されていません。");
+                    break;
+                case 2:
+                    alert("デバイスの位置がわかりません。");
+                    break;
+                case 3:
+                    alert("アイムアウトしました。");
+                    break;
+            }
+        },
+        {
+            // オプションの設定
+            enableHighAccuracy: true,
+            timeout: 6000,
+            maximumAge: 60000
+        }
+        )
 </script>
