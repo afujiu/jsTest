@@ -10,19 +10,17 @@
         <div><span>高度精度</span><span id="altitudeAccuracy"></span></div>
         <div><span>移動方向</span><span id="heading"></span></div>
         <div><span>速度</span><span id="speed"></span></div>
+        <div id="difs">
+
+        </div>
     </body>
 </html>
 <script>
+        let arry=[]
+        let bef_lati=0
+        let bef_long=0
         navigator.geolocation.watchPosition((position)=>{
-            let type=""
-            type="latitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-            type="longitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-            type="altitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-            type="accuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-            type="altitudeAccuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-            type="heading";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-            type="speed";document.querySelector(`#${type}`).innerHTML=position.coords[type]
-            console.log('test')
+            setPosition(position)
         }
         ,error=>{
             // 位置情報の取得に失敗した場合
@@ -45,4 +43,23 @@
             maximumAge: 60000
         }
         )
+
+        function setPosition(position){
+            let type=""
+            type="latitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="longitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="altitude";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="accuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="altitudeAccuracy";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="heading";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            type="speed";document.querySelector(`#${type}`).innerHTML=position.coords[type]
+            let diff_lati =position.coords.latitude-bef_lati
+            let diff_long =position.coords.longitude-bef_long
+            bef_lati=position.coords['latitude']
+            bef_long=position.coords['longitude']
+            let difs=document.getElementById("difs")
+            difs.insertAdjacentHTML('afterbegin',`<div>緯度差分:${diff_lati},経度差分:${diff_long}</div>`);
+            arry.push({"diff_lati":diff_lati,"diff_long":diff_long})
+            console.log(arry)
+        }
 </script>
