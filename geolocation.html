@@ -58,8 +58,6 @@
             bef_lati=position.coords['latitude']
             bef_long=position.coords['longitude']
             let difs=document.getElementById("difs")
-            difs.insertAdjacentHTML('afterbegin',`<div>緯度差分:${diff_lati},経度差分:${diff_long}</div>`);
-            arry.push({"diff_lati":diff_lati,"diff_long":diff_long})
-            console.log(arry)
+            difs.insertAdjacentHTML('beforeend',`<div>緯度差分:${diff_lati},経度差分:${diff_long}</div>`)
         }
 </script>
